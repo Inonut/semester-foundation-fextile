@@ -26,7 +26,7 @@ class SimpleView extends View{
 
 
 
-  implicit val service = List[ActorRef](Util.system.actorOf(Props[SimpleService].withDispatcher("javafx-dispatcher")))
+  implicit val service = List[ActorRef](Util.system.actorOf(Props[SimpleService]))
 
   val model = new SimpleModel()
 

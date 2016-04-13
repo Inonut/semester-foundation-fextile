@@ -26,11 +26,11 @@ class SimpleService extends Service{
 
 
         println(Thread.currentThread())
-        //while(true){
-          //Thread.sleep(100)
+        while(true){
+          Thread.sleep(10)
           source.value = (source.value.toInt + 1).toString
-        Thread.sleep(10000)
-        //}
+
+        }
 
       //Thread.sleep(10000)
   }

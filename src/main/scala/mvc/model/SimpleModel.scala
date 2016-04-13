@@ -2,6 +2,8 @@ package mvc.model
 
 import javafx.scene.paint.Paint
 
+import mvc.observable.{FXObjectProperty, FXStringProperty}
+
 import scalafx.beans.property.{ObjectProperty, StringProperty}
 
 /**
@@ -9,6 +11,6 @@ import scalafx.beans.property.{ObjectProperty, StringProperty}
   */
 class SimpleModel {
 
-  val fillProp = new ObjectProperty[Paint]()
-  val textProp = new StringProperty("0")
+  val fillProp = new FXObjectProperty[Paint]()
+  val textProp = new FXStringProperty("0")
 }
