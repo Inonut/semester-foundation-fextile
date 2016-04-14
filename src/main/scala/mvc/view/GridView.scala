@@ -28,6 +28,8 @@ class GridView {
   val pupulateGridEv = new PopulateGridEvent(model)
   val clearGridEv = new ClearGridEvent(model)
 
+  Util.generalEvents += clearGridEv
+
   model.width.onChange((_, oldVal, newVal) => {
     pupulateGridEv.fire()
   })

@@ -14,8 +14,12 @@ trait Event[S] {
   implicit val service: List[ActorRef]
   val source: S
 
-  def fire(): Unit ={
+  def fire(): Unit = {
     service.map(s => s ! this)
+  }
+
+  def waitForFinish(): Unit = {
+
   }
 
 }

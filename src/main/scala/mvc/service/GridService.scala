@@ -2,8 +2,9 @@ package mvc.service
 import javafx.scene.control.TextField
 import javafx.scene.layout.{ColumnConstraints, GridPane, RowConstraints}
 
-import mvc.event.{ClearGridEvent, PopulateGridEvent}
+import mvc.event.{ClearGridEvent, Event, PopulateGridEvent}
 import mvc.model.GridModel
+import mvc.util.Util
 
 
 /**
@@ -12,6 +13,8 @@ import mvc.model.GridModel
 class GridService extends Service{
   override def receive: Receive = {
     case PopulateGridEvent(model: GridModel) =>
+
+      Util.generalEvents.find( p => true).get.fire()
 
       (1 to model.width.value).foreach(i => {
         model.rowConstraints.add(new RowConstraints())
