@@ -1,12 +1,10 @@
 package mvc.model
 
 
-import javafx.beans.binding.ListBinding
-import javafx.collections.ObservableList
 import javafx.scene.Node
 import javafx.scene.layout.{ColumnConstraints, RowConstraints}
 
-import mvc.observable.FXIntegerProperty
+import mvc.observable.{FXIntegerProperty, FXListProperty}
 
 
 
@@ -15,11 +13,11 @@ import mvc.observable.FXIntegerProperty
   */
 class GridModel {
 
-  var children: ObservableList[Node] = null
+  val children = new FXListProperty[Node]()
 
-  var rowConstraints: ObservableList[RowConstraints] = null
+  val rowConstraints = new FXListProperty[RowConstraints]()
 
-  var columnConstraints: ObservableList[ColumnConstraints] = null
+  val columnConstraints  = new FXListProperty[ColumnConstraints]()
 
   val width = new FXIntegerProperty(30)
   val height = new FXIntegerProperty(30)

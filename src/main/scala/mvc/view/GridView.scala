@@ -45,9 +45,9 @@ class GridView {
     height = 600
     scene = new Scene {
       root = new GridPane(){
-        model.columnConstraints = columnConstraints
-        model.rowConstraints = rowConstraints
-        model.children = children
+        model.columnConstraints.set(columnConstraints)
+        model.rowConstraints.set(rowConstraints)
+        model.children.set(children)
       }
     }
   }

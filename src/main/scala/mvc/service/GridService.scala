@@ -2,11 +2,8 @@ package mvc.service
 import javafx.scene.control.TextField
 import javafx.scene.layout.{ColumnConstraints, GridPane, RowConstraints}
 
-import com.sun.javafx.application.PlatformImpl
 import mvc.event.{ClearGridEvent, PopulateGridEvent}
 import mvc.model.GridModel
-
-import scalafx.application.Platform
 
 
 /**
@@ -26,24 +23,15 @@ class GridService extends Service{
 
       (1 to model.width.value).foreach(i => {
         (1 to model.height.value).foreach(j => {
-          PlatformImpl.runAndWait(new Runnable {
-            override def run(): Unit = {
-              model.children.add(new TextField() {
-                GridPane.setRowIndex(this, i)
-                GridPane.setColumnIndex(this, j)
-              })
-            }
+          model.children.add(new TextField(){
+            GridPane.setRowIndex(this,i)
+            GridPane.setColumnIndex(this,j)
           })
         })
       })
     case ClearGridEvent(model: GridModel) =>
-      PlatformImpl.runAndWait(new Runnable {
-        override def run(): Unit = {
-          model.rowConstraints.clear()
-          model.columnConstraints.clear()
-          model.children.clear()
-        }
-      })
-
+      model.rowConstraints.clear()
+      model.columnConstraints.clear()
+      model.children.clear()
   }
 }
