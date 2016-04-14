@@ -20,15 +20,3 @@ class FXObjectProperty[T] extends ObjectProperty[T]{
 }
 
 
-object Test{
-  def main(args: Array[String]) {
-
-    var x = new FXObjectProperty[String]()
-
-    println(x.value)
-
-    x.value = "123"
-
-    println(x.value)
-  }
-}

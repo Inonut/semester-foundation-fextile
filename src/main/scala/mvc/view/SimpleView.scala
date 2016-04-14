@@ -22,7 +22,7 @@ import scalafx.scene.layout.StackPane
 /**
   * Created by Dragos on 11.04.2016.
   */
-class SimpleView extends View{
+class SimpleView {
 
 
 

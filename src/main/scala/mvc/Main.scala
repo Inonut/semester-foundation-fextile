@@ -2,7 +2,7 @@ package mvc
 
 import com.sun.javaws.jnl.JavaFXAppDesc
 import mvc.util.Util
-import mvc.view.SimpleView
+import mvc.view.{GridView, SimpleView}
 
 import scalafx.application.JFXApp
 import scalafx.scene.paint.Color
@@ -12,7 +12,7 @@ import scalafx.scene.paint.Color
   */
 object Main extends JFXApp{
 
-  val view = new SimpleView()
+  val view = new GridView()
 
   //view.events.map(e=>e.fire())
 
