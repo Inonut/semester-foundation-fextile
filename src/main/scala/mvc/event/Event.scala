@@ -1,27 +1,30 @@
 package mvc.event
 
-import java.security.Provider.Service
+import java.util.concurrent.TimeUnit
 
 import akka.actor.ActorRef
+import akka.pattern.ask
+import akka.util.Timeout
 
-import scalafx.event
+import scala.collection.mutable.ListBuffer
+import scala.concurrent.Future
 
 /**
   * Created by Dragos on 11.04.2016.
   */
 trait Event[S] {
 
-  implicit val service: List[ActorRef]
+  private implicit val timeout = new Timeout(10, TimeUnit.SECONDS)
+  private val serviceFuture = ListBuffer[Future[Any]]()
+
+  implicit val service: Seq[ActorRef]
   val source: S
 
-  def fire(): Unit = {
-    service.map(s => s ! this)
+
+  def fire(): Event[S] = {
+    serviceFuture ++= service.map(s =>  s ? this)
+    this
   }
-
-  def waitForFinish(): Unit = {
-
-  }
-
 }
 
 case class FillEvent[S](source: S)(implicit val service: List[ActorRef]) extends Event[S]

@@ -21,15 +21,19 @@ import scalafx.scene.layout.{GridPane, VBox}
   */
 class GridView {
 
+  //service
   implicit val service = List[ActorRef](Util.system.actorOf(Props[GridService]))
 
+  //model
   val model = new GridModel()
 
+  //event
   val pupulateGridEv = new PopulateGridEvent(model)
   val clearGridEv = new ClearGridEvent(model)
 
   Util.generalEvents += clearGridEv
 
+  //bind
   model.width.onChange((_, oldVal, newVal) => {
     pupulateGridEv.fire()
   })
@@ -38,7 +42,7 @@ class GridView {
     pupulateGridEv.fire()
   })
 
-
+  //view
   val stage = new PrimaryStage {
     title = "My Application"
     width = 800
