@@ -1,6 +1,6 @@
 package mvc.observable
 
-import javafx.beans.property.{ListProperty, SimpleListProperty}
+import javafx.beans.property.SimpleListProperty
 import javafx.collections.ObservableList
 
 import com.sun.javafx.application.PlatformImpl

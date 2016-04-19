@@ -1,8 +1,5 @@
 package mvc.observable
 
-
-import com.sun.javafx.application.PlatformImpl
-
 import scalafx.application.Platform
 import scalafx.beans.property.ObjectProperty
 
