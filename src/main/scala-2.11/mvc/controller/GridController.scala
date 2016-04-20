@@ -2,7 +2,7 @@ package mvc.controller
 
 import akka.actor.Props
 import akka.pattern.ask
-import mvc.model.GeneralModel
+import mvc.model.{GeneralModel, GridModel}
 import mvc.service.GridService
 import mvc.util.Util
 import mvc.util.Util.PopulateGrid
@@ -10,9 +10,8 @@ import mvc.util.Util.PopulateGrid
 /**
   * Created by Dragos on 19.04.2016.
   */
-class GridController extends Controller{
+class GridController(val model: GridModel = GeneralModel.gridModel) extends Controller{
 
-  val model = GeneralModel.gridModel
   val service = Util.system.actorOf(Props[GridService])
 
   bind()
@@ -20,8 +19,8 @@ class GridController extends Controller{
 
 
   override def init(): Unit = {
-    model.width.value = 30
-    model.height.value = 30
+    model.width.value = 3
+    model.height.value = 3
   }
 
   override def bind(): Unit = {
