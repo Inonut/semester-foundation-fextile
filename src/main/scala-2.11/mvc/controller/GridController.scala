@@ -21,7 +21,8 @@ class GridController extends Controller{
   val service = Util.system.actorOf(Props[GridService])
 
 
-  model.width.onChange((_, oldVal, newVal) => {
+
+  model.width.onChange(op = (_, oldVal, newVal) => {
     /*async {
       val fct = {
         service ? _
@@ -36,13 +37,21 @@ class GridController extends Controller{
     }*/
 
 
-    service ? "asll" andThen  { case x =>
-      println(x)
-      service ? "123" andThen {
-        case x => println(x)
-      }
+    val fct1: Future[Any] => Future[Any] = x => {
+      x.onComplete(res => {
+        println(res)
+        service ? res
+      })
     }
+    val fct2: Future[Any] => Future[Any] = x => {
+      println(x)
+      service ? x
+    }
+    val fct3: Future[Any] => Unit = x => println(x)
 
+    val fct = fct1 andThen fct2 andThen fct3
+
+    fct(Future{123})
 
   })
 }
