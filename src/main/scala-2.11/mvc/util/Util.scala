@@ -15,7 +15,7 @@ object Util {
 
   val system = ActorSystem("mvc",ConfigFactory.load)
 
-  def fxThread[R](op:  => R) {
+  def fxThread[R](op: => R) {
     PlatformImpl.runAndWait(new Runnable {
       override def run(): Unit = op
     })

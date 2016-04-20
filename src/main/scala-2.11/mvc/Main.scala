@@ -15,6 +15,4 @@ import scalafx.scene.layout.Pane
 object Main extends JFXApp{
 
   stage = new GridView().stage
-
-  //GeneralModel.gridModel.width.value = 5
 }

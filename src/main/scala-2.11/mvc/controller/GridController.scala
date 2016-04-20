@@ -15,11 +15,19 @@ class GridController extends Controller{
   val model = GeneralModel.gridModel
   val service = Util.system.actorOf(Props[GridService])
 
-  model.width.onChange( (_, oldVal, newVal) => service ? PopulateGrid(model))
-  model.height.onChange( (_, oldVal, newVal) => service ? PopulateGrid(model))
+  bind()
+  init()
 
-  model.width.value = 30
-  model.height.value = 30
+
+  override def init(): Unit = {
+    model.width.value = 30
+    model.height.value = 30
+  }
+
+  override def bind(): Unit = {
+    model.width.onChange( (_, oldVal, newVal) => service ? PopulateGrid(model))
+    model.height.onChange( (_, oldVal, newVal) => service ? PopulateGrid(model))
+  }
 }
 
 /*service ? "" flatMap( res => {
