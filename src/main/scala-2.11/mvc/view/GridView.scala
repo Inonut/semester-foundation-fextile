@@ -17,9 +17,6 @@ class GridView {
   val model = GeneralModel.gridModel
   val controller = new GridController()
 
-
-
-
   val stage = new PrimaryStage {
     title = "My Application"
     width = 800

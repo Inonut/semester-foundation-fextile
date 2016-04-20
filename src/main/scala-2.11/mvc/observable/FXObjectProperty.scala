@@ -1,5 +1,7 @@
 package mvc.observable
 
+import mvc.util.Util
+
 import scalafx.application.Platform
 import scalafx.beans.property.ObjectProperty
 
@@ -10,9 +12,7 @@ import scalafx.beans.property.ObjectProperty
 class FXObjectProperty[T] extends ObjectProperty[T]{
 
   override def value_=(v: T): Unit = {
-    Platform.runLater{
-      super.value_=(v)
-    }
+    Util.fxThread ( super.value_=(v))
   }
 }
 

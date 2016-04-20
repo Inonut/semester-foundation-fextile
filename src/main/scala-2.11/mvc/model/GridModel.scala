@@ -16,6 +16,6 @@ class GridModel {
 
   val columnConstraints  = new FXListProperty[ColumnConstraints]()
 
-  val width = new FXIntegerProperty(30)
-  val height = new FXIntegerProperty(30)
+  val width = new FXIntegerProperty()
+  val height = new FXIntegerProperty()
 }

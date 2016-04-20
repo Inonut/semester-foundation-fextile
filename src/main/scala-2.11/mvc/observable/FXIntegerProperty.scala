@@ -1,6 +1,7 @@
 package mvc.observable
 
-import scalafx.application.Platform
+import mvc.util.Util
+
 import scalafx.beans.property.IntegerProperty
 
 /**
@@ -14,7 +15,7 @@ class FXIntegerProperty extends IntegerProperty{
   }
 
   override def value_=(v: Int): Unit = {
-    Platform.runLater{
+    Util.fxThread {
       super.value_=(v)
     }
   }
