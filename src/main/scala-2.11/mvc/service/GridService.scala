@@ -40,6 +40,11 @@ class GridService extends Service{
       })
     })
 
+    model.children.forEach(new Consumer[Node] {
+      override def accept(t: Node): Unit = t match {
+        case x: SlidingElement => x.model.text.value = "5"
+      }
+    })
   }
 
   def clearGrid(model: GridModel): Unit =  {
@@ -55,6 +60,7 @@ class GridService extends Service{
       populateGrid(model)
 
       sender ! Success
+    case _ => println("----")
   }
 }
 

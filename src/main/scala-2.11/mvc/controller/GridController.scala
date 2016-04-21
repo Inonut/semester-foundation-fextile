@@ -1,21 +1,22 @@
 package mvc.controller
 
-import akka.actor.Props
+import akka.actor.{ActorRef, Props}
 import akka.pattern.ask
+import mvc.game.SlidingGame
 import mvc.model.{GeneralModel, GridModel}
 import mvc.service.GridService
 import mvc.util.Util
 import mvc.util.Util.PopulateGrid
 
+import scala.concurrent.ExecutionContext.Implicits.global
+
 /**
   * Created by Dragos on 19.04.2016.
   */
-class GridController(val model: GridModel = GeneralModel.gridModel) extends Controller{
+class GridController(val model: GridModel = GeneralModel.gridModel, val service: ActorRef = Util.system.actorOf(Props[GridService])) extends Controller{
 
-  val service = Util.system.actorOf(Props[GridService])
 
-  bind()
-  init()
+  //val context = new SlidingGame()
 
 
   override def init(): Unit = {
@@ -24,7 +25,7 @@ class GridController(val model: GridModel = GeneralModel.gridModel) extends Cont
   }
 
   override def bind(): Unit = {
-    model.width.onChange( (_, oldVal, newVal) => service ? PopulateGrid(model))
+    model.width.onChange( (_, oldVal, newVal) => service ? PopulateGrid(model) onComplete {x=> println(x)})
     model.height.onChange( (_, oldVal, newVal) => service ? PopulateGrid(model))
   }
 }

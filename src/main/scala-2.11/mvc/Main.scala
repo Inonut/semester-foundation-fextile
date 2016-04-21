@@ -1,6 +1,7 @@
 package mvc
 
-import mvc.view.GridView
+import mvc.game.SlidingGame
+import mvc.view.SlidingView
 
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -14,6 +15,6 @@ object Main extends JFXApp{
     title = "My Application"
     width = 800
     height = 600
-    scene = new GridView()
+    scene = new SlidingView()
   }
 }

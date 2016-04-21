@@ -11,7 +11,10 @@ import scala.concurrent.duration.{Duration, FiniteDuration}
   */
 trait Controller {
 
-  implicit val timeout: Timeout = new Timeout(10, TimeUnit.DAYS)
+  implicit val timeout: Timeout = new Timeout(5, TimeUnit.SECONDS)
+
+  bind()
+  init()
 
   def init()
 

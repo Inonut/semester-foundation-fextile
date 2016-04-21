@@ -11,7 +11,7 @@ import scalafx.scene.layout.{GridPane, Priority, StackPane}
 /**
   * Created by Dragos on 14.04.2016.
   */
-class GridView extends Scene{
+class SlidingView extends Scene{
 
   GeneralModel.gridModel = new GridModel()
 

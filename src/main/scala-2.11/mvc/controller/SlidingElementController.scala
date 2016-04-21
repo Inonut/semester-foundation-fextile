@@ -7,6 +7,7 @@ import mvc.model.SlidingElementModel
   */
 class SlidingElementController(val model: SlidingElementModel) extends Controller{
 
+
   override def init(): Unit = {}
 
   override def bind(): Unit = {}
