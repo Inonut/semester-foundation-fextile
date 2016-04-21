@@ -10,8 +10,6 @@ import mvc.model.GridModel
 import mvc.util.Util.PopulateGrid
 import mvc.view.SlidingElement
 
-import scala.collection.mutable.ListBuffer
-import scalafx.scene.control.Label
 import scalafx.scene.layout.{ColumnConstraints, GridPane, RowConstraints, StackPane}
 
 /**
@@ -43,6 +41,7 @@ class GridService extends Service{
     model.children.forEach(new Consumer[Node] {
       override def accept(t: Node): Unit = t match {
         case x: SlidingElement => x.model.text.value = "5"
+        case x: javafx.scene.layout.StackPane => println(x)
       }
     })
   }
