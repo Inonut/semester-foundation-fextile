@@ -1,21 +1,12 @@
 package mvc.observable
 
-import mvc.util.Util
+import javafx.beans.property.SimpleStringProperty
 
-import scalafx.application.Platform
-import scalafx.beans.property.StringProperty
+import mvc.util.Util
 
 /**
   * Created by Dragos on 13.04.2016.
   */
-class FXStringProperty extends StringProperty{
-
-  def this(initialValue: String) {
-    this()
-    value = initialValue
-  }
-
-  override def value_=(v: String): Unit = {
-    Util.fxThread ( super.value_=(v))
-  }
+class FXStringProperty extends SimpleStringProperty{
+  override def set(newValue: String): Unit = Util.fxThread{ super.set(newValue)}
 }

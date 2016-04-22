@@ -1,10 +1,10 @@
 package mvc.view
 
-import mvc.controller.SlidingElementController
-import mvc.model.{GeneralModel, SlidingElementModel}
+import javafx.scene.control.Label
+import javafx.scene.layout.StackPane
 
-import scalafx.scene.control.Label
-import scalafx.scene.layout.StackPane
+import mvc.controller.SlidingElementController
+import mvc.model.SlidingElementModel
 
 /**
   * Created by Dragos on 20.04.2016.
@@ -15,10 +15,8 @@ class SlidingElement extends StackPane{
   val controller = new SlidingElementController(model)
 
 
-  children = List(
-    new Label {
-      text <== model.text
-    }
-  )
+  getChildren.addAll(new Label(){
+    textProperty().bindBidirectional(model.text)
+  })
 
 }

@@ -1,19 +1,15 @@
 package mvc.observable
 
-import mvc.util.Util
+import javafx.beans.property.SimpleObjectProperty
 
-import scalafx.application.Platform
-import scalafx.beans.property.ObjectProperty
+import mvc.util.Util
 
 
 /**
   * Created by Dragos on 13.04.2016.
   */
-class FXObjectProperty[T] extends ObjectProperty[T]{
-
-  override def value_=(v: T): Unit = {
-    Util.fxThread ( super.value_=(v))
-  }
+class FXObjectProperty[T] extends SimpleObjectProperty[T]{
+  override def set(newValue: T): Unit = Util.fxThread { super.set(newValue)}
 }
 
 

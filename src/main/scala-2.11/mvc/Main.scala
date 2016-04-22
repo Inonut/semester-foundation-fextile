@@ -1,6 +1,8 @@
 package mvc
 
-import mvc.game.SlidingGame
+import javafx.application.Application
+import javafx.stage.Stage
+
 import mvc.view.SlidingView
 
 import scalafx.application.JFXApp
@@ -11,10 +13,13 @@ import scalafx.application.JFXApp.PrimaryStage
   */
 object Main extends JFXApp{
 
-  stage = new PrimaryStage {
-    title = "My Application"
-    width = 800
-    height = 600
-    scene = new SlidingView()
-  }
+  val primaryStage = new PrimaryStage()
+
+  primaryStage.setTitle("My Application")
+  primaryStage.setWidth(800)
+  primaryStage.setHeight(600)
+  primaryStage.setScene(new SlidingView())
+
+  this.stage = primaryStage
+
 }

@@ -1,8 +1,9 @@
 package mvc.controller
 
+import javafx.beans.value.{ChangeListener, ObservableValue}
+
 import akka.actor.{ActorRef, Props}
 import akka.pattern.ask
-import mvc.game.SlidingGame
 import mvc.model.{GeneralModel, GridModel}
 import mvc.service.GridService
 import mvc.util.Util
@@ -20,13 +21,19 @@ class GridController(val model: GridModel = GeneralModel.gridModel, val service:
 
 
   override def init(): Unit = {
-    model.width.value = 3
-    model.height.value = 3
+    model.width.set(4)
+    model.height.set(4)
   }
 
   override def bind(): Unit = {
-    model.width.onChange( (_, oldVal, newVal) => service ? PopulateGrid(model) onComplete {x=> println(x)})
-    model.height.onChange( (_, oldVal, newVal) => service ? PopulateGrid(model))
+
+    model.width.addListener(new ChangeListener[Number] {
+      override def changed(observable: ObservableValue[_ <: Number], oldValue: Number, newValue: Number): Unit = service ? PopulateGrid(model)
+    })
+
+    model.height.addListener(new ChangeListener[Number] {
+      override def changed(observable: ObservableValue[_ <: Number], oldValue: Number, newValue: Number): Unit = service ? PopulateGrid(model)
+    })
   }
 }
 

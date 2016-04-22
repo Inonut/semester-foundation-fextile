@@ -1,22 +1,12 @@
 package mvc.observable
 
-import mvc.util.Util
+import javafx.beans.property.SimpleIntegerProperty
 
-import scalafx.beans.property.IntegerProperty
+import mvc.util.Util
 
 /**
   * Created by Dragos on 14.04.2016.
   */
-class FXIntegerProperty extends IntegerProperty{
-
-  def this(initialValue: Int) {
-    this()
-    value = initialValue
-  }
-
-  override def value_=(v: Int): Unit = {
-    Util.fxThread {
-      super.value_=(v)
-    }
-  }
+class FXIntegerProperty extends SimpleIntegerProperty{
+  override def set(newValue: Int): Unit = Util.fxThread{ super.set(newValue)}
 }

@@ -1,30 +1,29 @@
 package mvc.view
 
+import javafx.collections.ObservableList
+import javafx.geometry.Pos
+import javafx.scene.Scene
+import javafx.scene.layout.{GridPane, Pane}
+
 import mvc.controller.GridController
 import mvc.model.{GeneralModel, GridModel}
-
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.geometry.Pos
-import scalafx.scene.Scene
-import scalafx.scene.layout.{GridPane, Priority, StackPane}
 
 /**
   * Created by Dragos on 14.04.2016.
   */
-class SlidingView extends Scene{
+class SlidingView extends Scene(new Pane){
 
   GeneralModel.gridModel = new GridModel()
 
   val model = GeneralModel.gridModel
   val controller = new GridController()
 
-
-  root = new GridPane(){
-    alignment = Pos.Center
-    model.columnConstraints.set(columnConstraints)
-    model.rowConstraints.set(rowConstraints)
-    model.children.set(children)
-  }
+  setRoot(new GridPane(){
+    setAlignment(Pos.CENTER)
+    model.columnConstraints.set(getColumnConstraints)
+    model.rowConstraints.set(getRowConstraints)
+    model.children.set(getChildren)
+  })
 
 
 }
