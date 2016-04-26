@@ -14,8 +14,8 @@ import ia.util.Util.function3ChangeListener
 /**
   * Created by Dragos on 4/26/2016.
   */
-class SlidingController(val model:SlidingModel = GeneralModel.slidingModel,
-                        val service: ActorRef = Util.system.actorOf(Props[SlidingService])) extends Controller{
+class SlidingController extends Controller{
+
 
   override def init(): Unit = {
     //model.width set 3

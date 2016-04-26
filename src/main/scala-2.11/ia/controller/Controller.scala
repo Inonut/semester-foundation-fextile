@@ -11,8 +11,10 @@ trait Controller {
 
   implicit val timeout: Timeout = new Timeout(5, TimeUnit.SECONDS)
 
-  bind()
-  init()
+  def start(): Unit = {
+    bind()
+    init()
+  }
 
   def init(): Unit
   def bind(): Unit

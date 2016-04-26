@@ -10,11 +10,4 @@ import ia.observable.{FXIntegerProperty, FXListProperty}
   * Created by Dragos on 4/26/2016.
   */
 class SlidingModel extends Model{
-
-  val children = new FXListProperty[Node]
-  val rowConstraints = new FXListProperty[RowConstraints]
-  val columnConstraints = new FXListProperty[ColumnConstraints]
-
-  val width = new FXIntegerProperty
-  val height = new FXIntegerProperty
 }
