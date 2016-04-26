@@ -6,6 +6,7 @@ import javafx.scene.layout.StackPane
 import mvc.controller.SlidingElementController
 import mvc.model.SlidingElementModel
 
+
 /**
   * Created by Dragos on 20.04.2016.
   */
