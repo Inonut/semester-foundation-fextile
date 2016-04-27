@@ -15,7 +15,7 @@ class SlidingElementView extends StackPane with View with ChangeListener[Sliding
 
     println("-----")
     this.getChildren add new Label{
-
+      this.textProperty bindBidirectional newValue.title
     }
   }
 }
