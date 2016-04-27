@@ -5,4 +5,6 @@ package ia.view
   */
 trait View {
 
+  def onChange: PartialFunction[Any, Unit]
+
 }

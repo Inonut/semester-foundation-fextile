@@ -8,4 +8,5 @@ import ia.service.Service
   */
 class SlidingGridService extends Service{
   override def receive: Receive = ???
+
 }

@@ -26,6 +26,10 @@ object Util {
     override def changed(observable: ObservableValue[_ <: T], oldValue: T, newValue: T): Unit = f(observable,oldValue,newValue)
   }
 
+  implicit def partialFunction3ChangeListener[T](f: PartialFunction[Any, Unit]) = new ChangeListener[T] {
+    override def changed(observable: ObservableValue[_ <: T], oldValue: T, newValue: T): Unit = f(observable,oldValue,newValue)
+  }
+
   implicit def function1Consumer[T](f: T => Any) = new Consumer[T] {
     override def accept(t: T): Unit = f(t)
   }
