@@ -1,28 +1,33 @@
 package ia
 
-import ia.observable.FXListProperty
-import ia.view.impl.SlidingView
+import javafx.scene.Scene
+
+import ia.model.impl.SlidingElementModel
+import ia.observable.FXObjectProperty
+import ia.view.impl.SlidingElementView
 
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 
 /**
-  * Created by Dragos on 19.04.2016.
+  * Created by Dragos on 4/27/2016.
   */
 object Main extends JFXApp{
 
-  val s = new FXListProperty[Int]
+  val x = new SlidingElementView
 
-  s.add(4)
-  s.add(4)
-  s.add(4)
+  val y = new FXObjectProperty[SlidingElementModel]
+
+  y addListener x
+
+  y set new SlidingElementModel
 
   val primaryStage = new PrimaryStage()
 
   primaryStage.setTitle("My Application")
   primaryStage.setWidth(800)
   primaryStage.setHeight(600)
-  primaryStage.setScene(new SlidingView())
+  primaryStage.setScene(new Scene(x))
 
   this.stage = primaryStage
 
